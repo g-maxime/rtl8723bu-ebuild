@@ -26,11 +26,9 @@ src_prepare() {
 		sed -i -e "s/^SUBARCH := .*$/SUBARCH := i386/" ${S}/Makefile || die
 	fi
 
-	KVER=$(make -sC /usr/src/linux kernelversion)
-
 	# there two whitespace characters instead of one after KVER in Makefile,
 	# so we manage both cases
-	sed -i -e "s/^KVER \?:= .*$/KVER := ${KVER}/" ${S}/Makefile  || die
+	sed -i -e "s/^KVER \?:= .*$/KVER := ${KV_FULL}/" ${S}/Makefile  || die
 }
 
 pkg_setup() {
