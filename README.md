@@ -1,5 +1,3 @@
-## rtl8723bu Gentoo Ebuild
-
 #### Gentoo ebuild for https://github.com/lwfinger/rtl8723bu
 
 ##### Install:
