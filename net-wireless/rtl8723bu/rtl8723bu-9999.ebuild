@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
+
 inherit git-2 linux-mod linux-info
 
 EGIT_REPO_URI="git://github.com/lwfinger/rtl8723bu.git"
