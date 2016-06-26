@@ -22,11 +22,9 @@ CONFIG_CHECK="~!RTL8XXXU"
 ERROR_RTL8XXXU="CONFIG_RTL8XXXU: rtl8xxxu takes precedence over rtl8723bu driver"
 
 src_prepare() {
-	if [ ${ARCH} == "amd64" ] ; then
-		sed -i -e "s/^SUBARCH := .*$/SUBARCH := X86_64/" ${S}/Makefile || die
-	elif [ ${ARCH} == "x86" ] ; then
-		sed -i -e "s/^SUBARCH := .*$/SUBARCH := i386/" ${S}/Makefile || die
-	fi
+	set_arch_to_kernel
+	sed -i -e "s/^SUBARCH := .*$/SUBARCH := ${$ARCH}/" ${S}/Makefile || die
+	set_arch_to_portage
 
 	# there two whitespace characters instead of one after KVER in Makefile,
 	# so we manage both cases
