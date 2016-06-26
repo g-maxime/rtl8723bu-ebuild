@@ -23,12 +23,10 @@ ERROR_RTL8XXXU="CONFIG_RTL8XXXU: rtl8xxxu takes precedence over rtl8723bu driver
 
 src_prepare() {
 	set_arch_to_kernel
-	sed -i -e "s/^SUBARCH := .*$/SUBARCH := ${ARCH}/" ${S}/Makefile || die
+	sed -i -e "s/^SUBARCH\s\+:=.*$/SUBARCH := ${ARCH}/" Makefile || die
 	set_arch_to_portage
 
-	# there two whitespace characters instead of one after KVER in Makefile,
-	# so we manage both cases
-	sed -i -e "s/^KVER \?:= .*$/KVER := ${KV_FULL}/" ${S}/Makefile  || die
+	sed -i -e "s/^KVER\s\+:=.*$/KVER := ${KV_FULL}/" Makefile  || die
 }
 
 pkg_setup() {
