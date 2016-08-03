@@ -28,8 +28,6 @@ src_prepare() {
 		-e "s/^KVER\s\+:=.*$/KVER := ${KV_FULL}/" \
 		Makefile || die "sed failed !"
 	set_arch_to_portage
-
-	sed -i -e "s/^KVER\s\+:=.*$/KVER := ${KV_FULL}/" Makefile  || die
 }
 
 pkg_setup() {
